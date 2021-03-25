@@ -1,0 +1,169 @@
+#!/usr/bin/env python3
+
+import glob
+import re
+from enum import Enum
+from typing import List, Optional
+from pathlib import Path
+from os import environ
+from subprocess import CompletedProcess, run
+from dataclasses import dataclass
+
+
+
+@dataclass
+class ParseResult:
+    stdout: str
+    stderr: str
+
+
+@dataclass
+class TestCase:
+    zgl_text: str
+    expected_parse: str
+
+
+@dataclass
+class TestResult:
+    expected_parse: str
+    parse: str
+    error: str
+
+
+@dataclass
+class TestSuiteResult:
+    total: int = 0
+    passed: int = 0
+    failed: int = 0
+
+
+def test_rig(args: List[str], stdin_input: str) -> CompletedProcess:
+    build_dir = "bin/build"
+    jar_antlr4 = environ["JAR_ANTLR4"]
+    grammar = "Zgl"
+    start_rule = "file"
+    base_args = [
+        "java", "-Xmx500M", 
+        "-cp", f"{build_dir}:{jar_antlr4}",
+        "org.antlr.v4.gui.TestRig",
+        grammar, start_rule,
+    ]
+    return run(base_args + args, input=stdin_input, capture_output=True, encoding="utf-8")
+
+
+def test_rig_tokens(stdin_input: str) -> CompletedProcess:
+    return test_rig(["-tokens"], stdin_input)
+
+
+def test_rig_tree(stdin_input: str) -> CompletedProcess:
+    return test_rig(["-tree"], stdin_input)
+
+
+def parse(zgl_text: str) -> ParseResult:
+    comp_proc = test_rig_tree(zgl_text)
+    stdout = comp_proc.stdout.rstrip()
+    stderr = comp_proc.stderr.rstrip()
+    return ParseResult(stdout, stderr)
+
+
+def run_test(test_case: TestCase) -> TestResult:
+    p = parse(test_case.zgl_text)
+    return TestResult(test_case.expected_parse, p.stdout, p.stderr)
+
+
+def is_passing(tr: TestResult) -> bool:
+    if len(tr.error) == 0:
+        return tr.expected_parse == tr.parse
+    else:
+        try:
+            pattern = re.compile(tr.expected_parse)
+        except:
+            raise RuntimeError(f"Cannot compile as regex: {tr.expected_parse}")
+        return pattern.match(tr.error)
+
+
+def parse_test_file(path) -> List[TestCase]:
+    content = path.read_text(encoding="UTF-8")
+    lines = content.splitlines()
+    
+    double_line = re.compile("^=====+[ ]*$")
+    single_line = re.compile("^- -( -)+[ ]*$")
+
+    test_cases: List[TestCase] = []
+    state = 0
+    for n, line in enumerate(lines):
+        if line == "<<< END >>>":
+            break
+        elif state == 0: # waiting for <<< BEGIN >>>
+            if line == "<<< BEGIN >>>":
+                state = 1
+        elif state == 1: # waiting for =====
+            zgl_text = ""
+            if double_line.match(line):
+                state = 2
+            elif len(line) == 0:
+                pass
+            else:
+                raise RuntimeError(f"line {n:3}: expecting double line in state {state}")
+        elif state == 2: # get <zgl_test> lines until - - -
+            if double_line.match(line):
+                raise RuntimeError(f"line {n:3}: unexpected double line in state {state}")
+            elif len(line) == 0:
+                pass
+            elif single_line.match(line):
+                state = 3
+            else:
+                if len(zgl_text) == 0:
+                    zgl_text = line
+                else:
+                    zgl_text += "\n" + line
+        elif state == 3: # get one <expected_parse> line
+            if single_line.match(line):
+                raise RuntimeError(f"line {n:3}: unexpected single line in state {state}")
+            if double_line.match(line):
+                raise RuntimeError(f"line {n:3}: unexpected single line in state {state}")
+            elif len(line) == 0:
+                pass
+            else:
+                expected_parse = line
+                test_case = TestCase(zgl_text, expected_parse)
+                test_cases.append(test_case)
+                state = 1
+        else:
+            raise RuntimeError(f"line {n:3}: unexpected state {state}")
+    return test_cases
+
+
+def test_all() -> TestSuiteResult:
+    r = TestSuiteResult()
+    test_cases = parse_test_file(Path("test/all.io_test"))
+    state = 0  # helps with newline spacing
+    for tc in test_cases:
+        r.total += 1
+        rt = run_test(tc)
+        if is_passing(rt):
+            if state == -1:
+                print()
+            print(f"+ PASS: {tc.zgl_text}")
+            r.passed += 1
+            state = 1
+        else:
+            if state != 0:
+                print()
+            print(f"- FAIL: {tc.zgl_text}")
+            print(test_rig_tokens(tc.zgl_text).stdout)
+            print("expected_parse :", rt.expected_parse)
+            print("parse          :", rt.parse)
+            print("error          :", rt.error)
+            r.failed += 1
+            state = -1
+    return r
+
+
+def main():
+    result = test_all()
+    print(result)
+
+
+if __name__ == '__main__':
+    main()

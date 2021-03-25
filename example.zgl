@@ -1,0 +1,3 @@
+claim = /country/USA is_a /label/struggling_democracy;
+Bjornlund_20210107 = https://foreignpolicy.com/2021/01/07/u-s-struggling-democracy-pro-trump-insurrection-capitol/ ;
+claim according_to Bjornlund_20210107;

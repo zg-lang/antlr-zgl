@@ -1,0 +1,24 @@
+#!/usr/bin/env zsh
+
+BUILD_DIR="bin/build"
+
+GRAMMAR_DIR="grammar"
+
+antlr4() {
+    java -Xmx500M -cp ${JAR_ANTLR4?} org.antlr.v4.Tool "$@"
+}
+
+# mkdir -p ${BUILD_DIR?}
+if [[ $1 == "-v" ]]; then
+  echo "Generating parser..."
+fi
+antlr4 ${GRAMMAR_DIR?}/ZglParser.g4 \
+  -lib ${BUILD_DIR?}\
+  -o ${BUILD_DIR?} \
+  -Xexact-output-dir
+
+if [[ $1 == "-v" ]]; then
+  echo "Compiling lexer and parser..."
+fi
+cd ${BUILD_DIR?} && \
+  javac -cp "${JAR_ANTLR4?}" Zgl*.java && cd - > /dev/null

@@ -1,0 +1,4 @@
+grammar/.antlr
+grammar/vscode/gen
+.idea
+bin/build

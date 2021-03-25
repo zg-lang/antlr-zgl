@@ -1,0 +1,795 @@
+<<< BEGIN >>>
+
+===============
+2021-03-18;
+- - - - - - - -
+(file (item (expression (nonGraph (literal (date 2021-03-18))))) ; <EOF>)
+
+===============
+2021-3-18;
+- - - - - - - -
+line 1:0 mismatched input '2021-3-18' expecting
+
+===============
+21-3-18;
+- - - - - - - -
+line 1:0 mismatched input '21-3-18' expecting
+
+===============
+1-8-1992;
+- - - - - - - -
+line 1:0 mismatched input '1-8-1992' expecting
+
+===============
+Feb-9;
+- - - - - - - -
+line 1:0 mismatched input 'Feb-9' expecting
+
+===============
+Jan-8-71;
+- - - - - - - -
+line 1:0 mismatched input 'Jan-8-71' expecting
+
+===============
+1956-11-32;
+- - - - - - - -
+line 1:0 mismatched input '1956-11-32' expecting
+
+===============
+1985-13-22;
+- - - - - - - -
+line 1:0 mismatched input '1985-13-22' expecting
+
+===============
+2021-03-18T04:12:00Z;
+- - - - - - - -
+(file (item (expression (nonGraph (literal (dateTime 2021-03-18T04:12:00Z))))) ; <EOF>)
+
+===============
+2021-03-18T04:12:00-04:00;
+- - - - - - - -
+(file (item (expression (nonGraph (literal (dateTime 2021-03-18T04:12:00-04:00))))) ; <EOF>)
+
+===============
+2020-04-05T23:59:59+00:00;
+- - - - - - - -
+(file (item (expression (nonGraph (literal (dateTime 2020-04-05T23:59:59+00:00))))) ; <EOF>)
+
+===============
+true;
+- - - - - - - -
+(file (item (expression (nonGraph (literal (bool true))))) ; <EOF>)
+
+===============
+false;
+- - - - - - - -
+(file (item (expression (nonGraph (literal (bool false))))) ; <EOF>)
+
+===============
+True;
+- - - - - - - -
+(file (item (expression (nonGraph (variable True)))) ; <EOF>)
+
+===============
+False;
+- - - - - - - -
+(file (item (expression (nonGraph (variable False)))) ; <EOF>)
+
+===============
+/x;
+- - - - - - - -
+(file (item (expression (nonGraph (entity /x)))) ; <EOF>)
+
+===============
+/x/y;
+- - - - - - - -
+(file (item (expression (nonGraph (entity /x/y)))) ; <EOF>)
+
+===============
+/x/y/z;
+- - - - - - - -
+(file (item (expression (nonGraph (entity /x/y/z)))) ; <EOF>)
+
+===============
+/person/Benjamin_Franklin;
+- - - - - - - -
+(file (item (expression (nonGraph (entity /person/Benjamin_Franklin)))) ; <EOF>)
+
+===============
+/place/;
+- - - - - - - -
+line 1:0 mismatched input '/place/' expecting
+
+===============
+/Tim Berners-Lee;
+- - - - - - - -
+line 1:5 extraneous input 'Berners-Lee' expecting ';'
+
+===============
+/person/Tim Powers;
+- - - - - - - -
+line 1:18 no viable alternative at input '/person/Tim Powers;'
+
+===============
+/"Tim Minchin";
+- - - - - - - -
+line 1:0 mismatched input '/"Tim' expecting
+
+===============
+https://plos.org ;
+- - - - - - - -
+(file (item (expression (nonGraph (literal (url https://plos.org))))) ; <EOF>)
+
+===============
+https://www.npr.org;
+- - - - - - - -
+line 1:20 missing ';' at '<EOF>'
+
+===============
+http://www.example.com?foo=BaR ;
+- - - - - - - -
+(file (item (expression (nonGraph (literal (url http://www.example.com?foo=BaR))))) ; <EOF>)
+
+===============
+http://www.ex ample.com?foo=BaR ;
+- - - - - - - -
+line 1:14 extraneous input 'ample\.com\?foo=BaR' expecting ';'
+
+===============
+https://www.npr.org/2021/03/18/978644288/fbi-asks-public-for-help ;
+- - - - - - - -
+(file (item (expression (nonGraph (literal (url https://www.npr.org/2021/03/18/978644288/fbi-asks-public-for-help))))) ; <EOF>)
+
+===============
+https://ssir.org/articles/entry/strengthening_democracy_by_embracing_a_multi_party_system ;
+- - - - - - - -
+(file (item (expression (nonGraph (literal (url https://ssir.org/articles/entry/strengthening_democracy_by_embracing_a_multi_party_system))))) ; <EOF>)
+
+===============
+1044;
+- - - - - - - -
+(file (item (expression (nonGraph (literal (intNum 1044))))) ; <EOF>)
+
+===============
+1049.;
+- - - - - - - -
+(file (item (expression (nonGraph (literal (floatNum 1049.))))) ; <EOF>)
+
+===============
+1,054;
+- - - - - - - -
+line 1:1 mismatched input ',' expecting ';'
+
+===============
+1_059;
+- - - - - - - -
+(file (item (expression (nonGraph (literal (intNum 1_059))))) ; <EOF>)
+
+===============
+299792458;
+- - - - - - - -
+(file (item (expression (nonGraph (literal (intNum 299792458))))) ; <EOF>)
+
+===============
+299_792_458;
+- - - - - - - -
+(file (item (expression (nonGraph (literal (intNum 299_792_458))))) ; <EOF>)
+
+===============
+867_5309;
+- - - - - - - -
+(file (item (expression (nonGraph (literal (intNum 867_5309))))) ; <EOF>)
+
+===============
+_1024;
+- - - - - - - -
+line 1:0 mismatched input '_1024' expecting
+
+===============
+0b;
+- - - - - - - -
+line 1:0 mismatched input '0b' expecting
+
+===============
+0o;
+- - - - - - - -
+line 1:0 mismatched input '0o' expecting
+
+===============
+0x;
+- - - - - - - -
+line 1:0 mismatched input '0x' expecting
+
+===============
+0b10111;
+- - - - - - - -
+(file (item (expression (nonGraph (literal (intNum 0b10111))))) ; <EOF>)
+
+===============
+0b00011020
+- - - - - - - -
+line 1:0 extraneous input '0b00011020' expecting
+
+===============
+0o37;
+- - - - - - - -
+(file (item (expression (nonGraph (literal (intNum 0o37))))) ; <EOF>)
+
+===============
+0o328;
+- - - - - - - -
+line 1:0 mismatched input '0o328' expecting
+
+===============
+0xB1DE6;
+- - - - - - - -
+(file (item (expression (nonGraph (literal (intNum 0xB1DE6))))) ; <EOF>)
+
+===============
+0xabcdef;
+- - - - - - - -
+(file (item (expression (nonGraph (literal (intNum 0xabcdef))))) ; <EOF>)
+
+===============
+0xE7800G00;
+- - - - - - - -
+line 1:0 mismatched input '0xE7800G00' expecting
+
+===============
+0x BAD;
+- - - - - - - -
+line 1:0 extraneous input '0x' expecting
+
+===============
+3.14159;
+- - - - - - - -
+(file (item (expression (nonGraph (literal (floatNum 3.14159))))) ; <EOF>)
+
+===============
+1024.;
+- - - - - - - -
+(file (item (expression (nonGraph (literal (floatNum 1024.))))) ; <EOF>)
+
+===============
++365.256363004;
+- - - - - - - -
+(file (item (expression (nonGraph (literal (floatNum +365.256363004))))) ; <EOF>)
+
+===============
++365.256_363_004;
+- - - - - - - -
+(file (item (expression (nonGraph (literal (floatNum +365.256_363_004))))) ; <EOF>)
+
+===============
+-7.2e6;
+- - - - - - - -
+(file (item (expression (nonGraph (literal (floatNum -7.2e6))))) ; <EOF>)
+
+===============
+-7.2e+6;
+- - - - - - - -
+(file (item (expression (nonGraph (literal (floatNum -7.2e+6))))) ; <EOF>)
+
+===============
+-7.2E-6;
+- - - - - - - -
+(file (item (expression (nonGraph (literal (floatNum -7.2E-6))))) ; <EOF>)
+
+===============
+-12. 123;
+- - - - - - - -
+line 1:8 no viable alternative at input '-12. 123;'
+
+===============
+b64"YmFk";
+- - - - - - - -
+(file (item (expression (nonGraph (literal (base64 b64"YmFk"))))) ; <EOF>)
+
+===============
+B64"YmlnIEI=";
+- - - - - - - -
+(file (item (expression (nonGraph (literal (base64 B64"YmlnIEI="))))) ; <EOF>)
+
+===============
+b64"aGVsbG8=";
+- - - - - - - -
+(file (item (expression (nonGraph (literal (base64 b64"aGVsbG8="))))) ; <EOF>)
+
+===============
+b64"bm9==wZQ";
+- - - - - - - -
+line 1:0 mismatched input 'b64"bm9==wZQ"' expecting
+
+===============
+b63"NjM=";
+- - - - - - - -
+line 1:0 mismatched input 'b63"NjM="' expecting
+
+===============
+b64"Y_Fk";
+- - - - - - - -
+line 1:0 mismatched input 'b64"Y_Fk"' expecting
+
+===============
+b64"&mFk";
+- - - - - - - -
+line 1:0 mismatched input 'b64"&mFk"' expecting
+
+===============
+B64"WiBHcmFwaCBMYW5ndWFnZQ==";
+- - - - - - - -
+(file (item (expression (nonGraph (literal (base64 B64"WiBHcmFwaCBMYW5ndWFnZQ=="))))) ; <EOF>)
+
+===============
+[];
+- - - - - - - -
+(file (item (expression (nonGraph (list [ ])))) ; <EOF>)
+
+===============
+[,];
+- - - - - - - -
+line 1:1 no viable alternative at input '\[,'
+
+===============
+[1, 2];
+- - - - - - - -
+(file (item (expression (nonGraph (list [ (expression (nonGraph (literal (intNum 1)))) , (expression (nonGraph (literal (intNum 2)))) ])))) ; <EOF>)
+
+===============
+[1, 2,];
+- - - - - - - -
+(file (item (expression (nonGraph (list [ (expression (nonGraph (literal (intNum 1)))) , (expression (nonGraph (literal (intNum 2)))) , ])))) ; <EOF>)
+
+===============
+[4, "five"];
+- - - - - - - -
+(file (item (expression (nonGraph (list [ (expression (nonGraph (literal (intNum 4)))) , (expression (nonGraph (literal (string "five")))) ])))) ; <EOF>)
+
+===============
+["triangle", [5, 12, 13]];
+- - - - - - - -
+(file (item (expression (nonGraph (list [ (expression (nonGraph (literal (string "triangle")))) , (expression (nonGraph (list [ (expression (nonGraph (literal (intNum 5)))) , (expression (nonGraph (literal (intNum 12)))) , (expression (nonGraph (literal (intNum 13)))) ]))) ])))) ; <EOF>)
+
+===============
+#{};
+- - - - - - - -
+(file (item (expression (nonGraph (set #{ })))) ; <EOF>)
+
+===============
+#{1, 2};
+- - - - - - - -
+(file (item (expression (nonGraph (set #{ (expression (nonGraph (literal (intNum 1)))) , (expression (nonGraph (literal (intNum 2)))) })))) ; <EOF>)
+
+===============
+#{1, 2,};
+- - - - - - - -
+(file (item (expression (nonGraph (set #{ (expression (nonGraph (literal (intNum 1)))) , (expression (nonGraph (literal (intNum 2)))) , })))) ; <EOF>)
+
+===============
+#{/CS/automata, /CS/regex};
+- - - - - - - -
+(file (item (expression (nonGraph (set #{ (expression (nonGraph (entity /CS/automata))) , (expression (nonGraph (entity /CS/regex))) })))) ; <EOF>)
+
+===============
+{};
+- - - - - - - -
+(file (item (expression (nonGraph (map { })))) ; <EOF>)
+
+===============
+{"name": "Martin"};
+- - - - - - - -
+(file (item (expression (nonGraph (map { (expression (nonGraph (literal (string "name")))) : (expression (nonGraph (literal (string "Martin")))) })))) ; <EOF>)
+
+===============
+{ "F" : 7, "G" : 11 };
+- - - - - - - -
+(file (item (expression (nonGraph (map { (expression (nonGraph (literal (string "F")))) : (expression (nonGraph (literal (intNum 7)))) , (expression (nonGraph (literal (string "G")))) : (expression (nonGraph (literal (intNum 11)))) })))) ; <EOF>)
+
+===============
+{"a" : };
+- - - - - - - -
+line 1:7 no viable alternative at input '{"a" : }'
+
+===============
+@
+- - - - - - - -
+line 1:0 extraneous input '@' expecting
+
+===============
+^;
+- - - - - - - -
+line 1:0 mismatched input '\^' expecting
+
+===============
+word
+- - - - - - - -
+line 1:4 missing ';' at '<EOF>'
+
+===============
+"zero";
+- - - - - - - -
+(file (item (expression (nonGraph (literal (string "zero"))))) ; <EOF>)
+
+===============
+#"one"#;
+- - - - - - - -
+(file (item (expression (nonGraph (literal (string #"one"#))))) ; <EOF>)
+
+===============
+##"two"##;
+- - - - - - - -
+(file (item (expression (nonGraph (literal (string ##"two"##))))) ; <EOF>)
+
+===============
+###"three"###;
+- - - - - - - -
+(file (item (expression (nonGraph (literal (string ###"three"###))))) ; <EOF>)
+
+===============
+####"four"####;
+- - - - - - - -
+(file (item (expression (nonGraph (literal (string ####"four"####))))) ; <EOF>)
+
+===============
+x-e"...";
+- - - - - - - -
+line 1:0 mismatched input 'x-e"..."' expecting
+
+===============
+x"...";
+- - - - - - - -
+line 1:0 mismatched input 'x"..."' expecting
+
+===============
+x-e"..."-2;
+- - - - - - - -
+line 1:0 mismatched input 'x-e"..."-2' expecting
+
+===============
+"first
+second";
+- - - - - - - -
+(file (item (expression (nonGraph (literal (string "first\nsecond"))))) ; <EOF>)
+
+===============
+"first\
+second";
+- - - - - - - -
+(file (item (expression (nonGraph (literal (string "first\\nsecond"))))) ; <EOF>)
+
+===============
+-e"a
+   b
+     c";
+- - - - - - - -
+(file (item (expression (nonGraph (literal (string -e"a\n   b\n     c"))))) ; <EOF>)
+
+===============
+-ecltaz"...";
+- - - - - - - -
+(file (item (expression (nonGraph (literal (string -ecltaz"..."))))) ; <EOF>)
+
+===============
+-ccc"syntax ok";
+- - - - - - - -
+(file (item (expression (nonGraph (literal (string -ccc"syntax ok"))))) ; <EOF>)
+
+===============
+-4"not ok";
+- - - - - - - -
+line 1:0 mismatched input '-4"not' expecting
+
+===============
+"also not ok"-e;
+- - - - - - - -
+line 1:13 extraneous input '-e' expecting ';'
+
+===============
+"concat" ++ "strings";
+- - - - - - - -
+(file (item (expression (nonGraph (literal (string "concat" ++ "strings"))))) ; <EOF>)
+
+===============
+"not"++"ok";
+- - - - - - - -
+line 1:0 mismatched input '"not"[+][+]"ok"' expecting
+
+===============
+-e"mix \" ++ #""forms""#;
+- - - - - - - -
+(file (item (expression (nonGraph (literal (string -e"mix \" ++ #""forms""#))))) ; <EOF>)
+
+===============
+<26 miles>;
+- - - - - - - -
+(file (item (expression (nonGraph (literal (quantity < (intNum 26) (variable miles) >))))) ; <EOF>)
+
+===============
+<26.2 /unit/mile>;
+- - - - - - - -
+(file (item (expression (nonGraph (literal (quantity < (floatNum 26.2) (entity /unit/mile) >))))) ; <EOF>)
+
+===============
+<78 9 wrong>;
+- - - - - - - -
+line 1:4 no viable alternative at input '<78 9'
+
+===============
+a b;
+- - - - - - - -
+line 1:3 no viable alternative at input 'a b;'
+
+===============
+a   b c;
+- - - - - - - -
+(file (item (expression (graph (eo (e (nonGraph (variable a)))) (eo (e (nonGraph (variable b)))) (eo (e (nonGraph (variable c))))))) ; <EOF>)
+
+===============
+a b c;
+- - - - - - - -
+(file (item (expression (graph (eo (e (nonGraph (variable a)))) (eo (e (nonGraph (variable b)))) (eo (e (nonGraph (variable c))))))) ; <EOF>)
+
+===============
+a b c d;
+- - - - - - - -
+line 1:7 no viable alternative at input 'a b c d;'
+
+===============
+a b c d e;
+- - - - - - - -
+(file (item (expression (graph (eo (e (nonGraph (variable a))) (e (nonGraph (variable b))) (e (nonGraph (variable c)))) (eo (e (nonGraph (variable d)))) (eo (e (nonGraph (variable e))))))) ; <EOF>)
+
+===============
+a b c d e f;
+- - - - - - - -
+line 1:11 no viable alternative at input 'a b c d e f;'
+
+===============
+a b c d e f g;
+- - - - - - - -
+(file (item (expression (graph (eo (e (nonGraph (variable a))) (e (nonGraph (variable b))) (e (nonGraph (variable c))) (e (nonGraph (variable d))) (e (nonGraph (variable e)))) (eo (e (nonGraph (variable f)))) (eo (e (nonGraph (variable g))))))) ; <EOF>)
+
+===============
+a { b };
+- - - - - - - -
+line 1:7 mismatched input ';' expecting
+
+===============
+a b { c };
+- - - - - - - -
+(file (item (expression (graph (eo (e (nonGraph (variable a)))) (eo (e (nonGraph (variable b)))) (eo { (e (nonGraph (variable c))) })))) ; <EOF>)
+
+===============
+a { b } { c };
+- - - - - - - -
+(file (item (expression (graph (eo (e (nonGraph (variable a)))) (eo { (e (nonGraph (variable b))) }) (eo { (e (nonGraph (variable c))) })))) ; <EOF>)
+
+===============
+{ a } b { c };
+- - - - - - - -
+(file (item (expression (graph (eo { (e (nonGraph (variable a))) }) (eo (e (nonGraph (variable b)))) (eo { (e (nonGraph (variable c))) })))) ; <EOF>)
+
+===============
+{ a } { b } { c };
+- - - - - - - -
+(file (item (expression (graph (eo { (e (nonGraph (variable a))) }) (eo { (e (nonGraph (variable b))) }) (eo { (e (nonGraph (variable c))) })))) ; <EOF>)
+
+===============
+{ a } { b c };
+- - - - - - - -
+(file (item (expression (graph (eo { (e (nonGraph (variable a))) }) (ee { (e (nonGraph (variable b))) (e (nonGraph (variable c))) })))) ; <EOF>)
+
+===============
+a b { c d e };
+- - - - - - - -
+(file (item (expression (graph (eo (e (nonGraph (variable a)))) (eo (e (nonGraph (variable b)))) (eo { (e (nonGraph (variable c))) (e (nonGraph (variable d))) (e (nonGraph (variable e))) })))) ; <EOF>)
+
+===============
+a b { c d e , f };
+- - - - - - - -
+(file (item (expression (graph (eo (e (nonGraph (variable a)))) (eo (e (nonGraph (variable b)))) (eo { (e (nonGraph (variable c))) (e (nonGraph (variable d))) (e (nonGraph (variable e))) , (e (nonGraph (variable f))) })))) ; <EOF>)
+
+===============
+a b { c , d e f };
+- - - - - - - -
+(file (item (expression (graph (eo (e (nonGraph (variable a)))) (eo (e (nonGraph (variable b)))) (eo { (e (nonGraph (variable c))) , (e (nonGraph (variable d))) (e (nonGraph (variable e))) (e (nonGraph (variable f))) })))) ; <EOF>)
+
+===============
+a { b, c };
+- - - - - - - -
+line 1:10 mismatched input ';' expecting
+
+===============
+a { b c };
+- - - - - - - -
+(file (item (expression (graph (eo (e (nonGraph (variable a)))) (ee { (e (nonGraph (variable b))) (e (nonGraph (variable c))) })))) ; <EOF>)
+
+===============
+a { b c } d;
+- - - - - - - -
+line 1:11 mismatched input ';' expecting
+
+===============
+a b { c d };
+- - - - - - - -
+line 1:11 no viable alternative at input 'a b { c d };'
+
+===============
+a b { c d } e;
+- - - - - - - -
+(file (item (expression (graph (ee (e (nonGraph (variable a))) (e (nonGraph (variable b)))) (ee { (e (nonGraph (variable c))) (e (nonGraph (variable d))) }) (eo (e (nonGraph (variable e))))))) ; <EOF>)
+
+===============
+a b c { d e };
+- - - - - - - -
+(file (item (expression (graph (ee (e (nonGraph (variable a))) (e (nonGraph (variable b)))) (eo (e (nonGraph (variable c)))) (ee { (e (nonGraph (variable d))) (e (nonGraph (variable e))) })))) ; <EOF>)
+
+===============
+a b c d { e f };
+- - - - - - - -
+line 1:15 no viable alternative at input 'a b c d { e f };'
+
+===============
+{ a b } c { d e };
+- - - - - - - -
+(file (item (expression (graph (ee { (e (nonGraph (variable a))) (e (nonGraph (variable b))) }) (eo (e (nonGraph (variable c)))) (ee { (e (nonGraph (variable d))) (e (nonGraph (variable e))) })))) ; <EOF>)
+
+===============
+a { b c } { d e };
+- - - - - - - -
+(file (item (expression (graph (eo (e (nonGraph (variable a)))) (ee { (e (nonGraph (variable b))) (e (nonGraph (variable c))) }) (ee { (e (nonGraph (variable d))) (e (nonGraph (variable e))) })))) ; <EOF>)
+
+===============
+{ a b } c;
+- - - - - - - -
+(file (item (expression (graph (ee { (e (nonGraph (variable a))) (e (nonGraph (variable b))) }) (eo (e (nonGraph (variable c))))))) ; <EOF>)
+
+===============
+{ a b } c d;
+- - - - - - - -
+line 1:11 no viable alternative at input '{ a b } c d;'
+
+===============
+a { b c, d e };
+- - - - - - - -
+(file (item (expression (graph (eo (e (nonGraph (variable a)))) (ee { (e (nonGraph (variable b))) (e (nonGraph (variable c))) , (e (nonGraph (variable d))) (e (nonGraph (variable e))) })))) ; <EOF>)
+
+===============
+a { b c d e };
+- - - - - - - -
+(file (item (expression (graph (eo (e (nonGraph (variable a)))) (ee { (e (nonGraph (variable b))) (e (nonGraph (variable c))) (e (nonGraph (variable d))) (e (nonGraph (variable e))) })))) ; <EOF>)
+
+===============
+a { b c d e, f g };
+- - - - - - - -
+(file (item (expression (graph (eo (e (nonGraph (variable a)))) (ee { (e (nonGraph (variable b))) (e (nonGraph (variable c))) (e (nonGraph (variable d))) (e (nonGraph (variable e))) , (e (nonGraph (variable f))) (e (nonGraph (variable g))) })))) ; <EOF>)
+
+===============
+x note "foo" format markdown;
+- - - - - - - -
+(file (item (expression (graph (eo (e (nonGraph (variable x))) (e (nonGraph (variable note))) (e (nonGraph (literal (string "foo"))))) (eo (e (nonGraph (variable format)))) (eo (e (nonGraph (variable markdown))))))) ; <EOF>)
+
+===============
+x { note "foo" format markdown };
+- - - - - - - -
+(file (item (expression (graph (eo (e (nonGraph (variable x)))) (ee { (e (nonGraph (variable note))) (e (nonGraph (literal (string "foo")))) (e (nonGraph (variable format))) (e (nonGraph (variable markdown))) })))) ; <EOF>)
+
+===============
++a { 
+  b c,
+  d e,
+};
+- - - - - - - -
+(file (item (expression (graph (eo (e (nonGraph (variable +a)))) (ee { (e (nonGraph (variable b))) (e (nonGraph (variable c))) , (e (nonGraph (variable d))) (e (nonGraph (variable e))) , })))) ; <EOF>)
+
+===============
++ { 
+  b c,
+  d e,
+};
+- - - - - - - -
+(file (item (expression (graph (eo (e (nonGraph (variable +)))) (ee { (e (nonGraph (variable b))) (e (nonGraph (variable c))) , (e (nonGraph (variable d))) (e (nonGraph (variable e))) , })))) ; <EOF>)
+
+===============
+dist = 26.2;
+- - - - - - - -
+(file (item (statement (bind dist = (expression (nonGraph (literal (floatNum 26.2))))))) ; <EOF>)
+
+===============
+foo = a;
+- - - - - - - -
+(file (item (statement (bind foo = (expression (nonGraph (variable a)))))) ; <EOF>)
+
+===============
+bar = a b;
+- - - - - - - -
+line 1:9 no viable alternative at input 'a b;'
+
+===============
+CO2_emissions = <35e9 tons>;
+- - - - - - - -
+(file (item (statement (bind CO2_emissions = (expression (nonGraph (literal (quantity < (intNum 35e9) (variable tons) >))))))) ; <EOF>)
+
+===============
+subgraph = a b c;
+- - - - - - - -
+(file (item (statement (bind subgraph = (expression (graph (eo (e (nonGraph (variable a)))) (eo (e (nonGraph (variable b)))) (eo (e (nonGraph (variable c))))))))) ; <EOF>)
+
+===============
+:alias /CS/regex /CS/regular_expression;
+- - - - - - - -
+(file (item (statement (alias :alias (entity /CS/regex) (entity /CS/regular_expression)))) ; <EOF>)
+
+===============
+:alias /logic/not valid;
+- - - - - - - -
+line 1:18 mismatched input 'valid' expecting Entity
+
+===============
+:alias invalid this_is;
+- - - - - - - -
+line 1:7 mismatched input 'invalid' expecting Entity
+
+===============
+:alias ::yeah /no;
+- - - - - - - -
+line 1:7 extraneous input '::yeah' expecting Entity
+
+===============
+:use flubber;
+- - - - - - - -
+(file (item (statement (use :use (path flubber)))) ; <EOF>)
+
+===============
+:use "nope";
+- - - - - - - -
+line 1:5 mismatched input '"nope"' expecting
+
+===============
+:use ::root;
+- - - - - - - -
+(file (item (statement (use :use (path ::root)))) ; <EOF>)
+
+===============
+:use ::3fold;
+- - - - - - - -
+line 1:5 mismatched input ':' expecting
+
+===============
+:use ::here::there;
+- - - - - - - -
+(file (item (statement (use :use (path ::here::there)))) ; <EOF>)
+
+===============
+:use ::art::;
+- - - - - - - -
+line 1:10 mismatched input ':' expecting ';'
+
+===============
+ZGL homepage https://www.zg-lang.org ;
+- - - - - - - -
+(file (item (expression (graph (eo (e (nonGraph (variable ZGL)))) (eo (e (nonGraph (variable homepage)))) (eo (e (nonGraph (literal (url https://www.zg-lang.org)))))))) ; <EOF>)
+
+===============
+ZGL {
+  abbreviation "ZGL",
+  is_a /CS/declarative_language,
+  zulip_url https://zgl.zulipchat.com ,
+};
+- - - - - - - -
+(file (item (expression (graph (eo (e (nonGraph (variable ZGL)))) (ee { (e (nonGraph (variable abbreviation))) (e (nonGraph (literal (string "ZGL")))) , (e (nonGraph (variable is_a))) (e (nonGraph (entity /CS/declarative_language))) , (e (nonGraph (variable zulip_url))) (e (nonGraph (literal (url https://zgl.zulipchat.com)))) , })))) ; <EOF>)
+
+===============
++ {
+  url https://jamesrcridland.medium.com/hey-com-email-first-impressions-bb51e56f6f18 ,
+  author "James Cridland",
+  title "HEY.com email: I came, I bought, I’m not using it any more",
+  date 2020-06-18,
+  content ##"
+    I loathe and hate email. I often say to people, as I battle with my inbox, that if I was ever going to retrain, I’d be an email trainer: because email is a horrible time-sink for all of us. It’s broken, it’s horrible, and it pains me. It fills me with dread each time I open my email box: that sinking feeling of horror at another four hundred million people who all want my attention.
+  "##,
+};
+- - - - - - - -
+(file (item (expression (graph (eo (e (nonGraph (variable +)))) (ee { (e (nonGraph (variable url))) (e (nonGraph (literal (url https://jamesrcridland.medium.com/hey-com-email-first-impressions-bb51e56f6f18)))) , (e (nonGraph (variable author))) (e (nonGraph (literal (string "James Cridland")))) , (e (nonGraph (variable title))) (e (nonGraph (literal (string "HEY.com email: I came, I bought, I’m not using it any more")))) , (e (nonGraph (variable date))) (e (nonGraph (literal (date 2020-06-18)))) , (e (nonGraph (variable content))) (e (nonGraph (literal (string ##"\n    I loathe and hate email. I often say to people, as I battle with my inbox, that if I was ever going to retrain, I’d be an email trainer: because email is a horrible time-sink for all of us. It’s broken, it’s horrible, and it pains me. It fills me with dread each time I open my email box: that sinking feeling of horror at another four hundred million people who all want my attention.\n  "##)))) , })))) ; <EOF>)
+
+<<< END >>>

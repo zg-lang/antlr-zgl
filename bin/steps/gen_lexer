@@ -1,0 +1,17 @@
+#!/usr/bin/env zsh
+
+BUILD_DIR="bin/build"
+
+GRAMMAR_DIR="grammar"
+
+antlr4() {
+    java -Xmx500M -cp ${JAR_ANTLR4?} org.antlr.v4.Tool "$@"
+}
+
+# mkdir -p ${BUILD_DIR?}
+if [[ $1 == "-v" ]]; then
+  echo "Generating lexer..."
+fi
+antlr4 ${GRAMMAR_DIR?}/ZglLexer.g4 \
+  -o ${BUILD_DIR?} \
+  -Xexact-output-dir

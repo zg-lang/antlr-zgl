@@ -1,0 +1,3 @@
+#!/usr/bin/env zsh
+
+./bin/steps/gen_lexer && ./bin/steps/gen_parser

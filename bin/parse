@@ -1,0 +1,18 @@
+#!/usr/bin/env zsh
+
+BUILD_DIR="bin/build"
+
+START_RULE="file"
+
+antlr4() {
+    java -Xmx500M -cp ${JAR_ANTLR4?} org.antlr.v4.Tool "$@"
+}
+
+grun() {
+    java -Xmx500M -cp ${BUILD_DIR?}:${JAR_ANTLR4?} org.antlr.v4.gui.TestRig "$@"
+}
+
+if [[ "$1" == "-v" ]]; then
+  echo "Running org.antlr.v4.gui.TestRig..."
+fi
+grun Zgl ${START_RULE?} -tree "$@"
