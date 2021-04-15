@@ -155,6 +155,7 @@ Counter-examples:
 */
 FloatNumber
     : [-+]? WholeNumber '.' WholeNumber? Exponent?
+    | [-+]? '.' WholeNumber Exponent?
     ;
 
 // == Boolean tokens ==

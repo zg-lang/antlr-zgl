@@ -251,6 +251,11 @@ line 1:0 extraneous input '0x' expecting
 (file (item (expression (nonGraph (literal (floatNum 1024.))))) ; <EOF>)
 
 ===============
+.1776;
+- - - - - - - -
+(file (item (expression (nonGraph (literal (floatNum .1776))))) ; <EOF>)
+
+===============
 +365.256363004;
 - - - - - - - -
 (file (item (expression (nonGraph (literal (floatNum +365.256363004))))) ; <EOF>)
